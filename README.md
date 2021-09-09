@@ -10,7 +10,7 @@ The productino application can be reached via [this](https://zilahir-todo.netlif
 
 - [x] create git repo on github
 - [x] setup the project (webpack, linters, skeleton of the application, scss)
-- [ ] create deployment process (`Github Actions` and `Netlify`)
+- [x] create deployment process (`Github Actions` and `Netlify`)
 - [x] implementation basic functionalities
 - [x] deploy first version
 
@@ -24,12 +24,18 @@ In this project I am using both `classes` and `id` attributes on `HTMLElements`.
 
 Below listed the required features of the application set by the course this was made for.
 
+### Minimal
+
 - [x] The items entered in the field are assembled into a list on the page by pressing the button.
 - [x] The content of the input fields must be checked for blank as well as incorrect (eg too short) content
 - [x] Incorrect content in the input field causes an error message as well as an incorrect field highlighting (eg red - `X` border).
 - [x] It must be possible to remove elements from the list and mark the task as done
 - [x] The application CSS and JavaScript must be specified in an external CSS file
 - [x] The information in the list is stored in a browser, eg localstorage
+
+### Additional
+
+- [x] You can implement a counter that shows the number of open items in the list
 
 ## Webpack
 

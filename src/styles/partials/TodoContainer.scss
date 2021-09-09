@@ -83,4 +83,14 @@
             font-weight: 700;
         }
     }
+
+    .todo-counter {
+        margin-bottom: 20px;
+        border-bottom: 2px solid rgba($color: #444, $alpha: 0.25);
+        padding-bottom: 5px;
+
+        p {
+            font-size: 22px;
+        }
+    }
 }

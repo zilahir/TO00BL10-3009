@@ -44,6 +44,7 @@ function handleRemoveTodo(event) {
     const todos = JSON.parse(window.localStorage.getItem('todos'))
     const filtered = todos.filter(todo => todo.id.toString() !== event.detail)
     window.localStorage.setItem('todos', JSON.stringify(filtered))
+    elements.todoContainer.querySelector('p').innerHTML = `${filtered.length} todo(s)`
     const todo = new Todo({id: event.detail})
     todo.remove()
 }
@@ -77,6 +78,12 @@ function setup() {
         button.selector.innerHTML = `Show ${button.label}`;
         return button.selector.addEventListener('click', () => handleFilterLogic(button.logic, button.label))
     })
+    const todoCounterContainer = document.createElement('div');
+    todoCounterContainer.setAttribute('id', 'todo-counter');
+    todoCounterContainer.setAttribute('class', 'todo-counter');
+    const todoCounter = document.createElement('p');
+    todoCounterContainer.append(todoCounter);
+    elements.todoContainer.prepend(todoCounterContainer);
 }
 
 export default setup

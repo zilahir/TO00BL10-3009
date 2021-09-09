@@ -10,6 +10,7 @@ const showAllTodosButton = document.getElementById('show-all')
 const showCompletedTodosButton = document.getElementById('show-completed')
 const showActiveTodosButton = document.getElementById('show-active')
 const errorMessageContainer = document.getElementById('error-container')
+const todoCounter = document.getElementById('todo-counter');
 
 export const FILTER_ALL = 'FILTER_ALL'
 export const FILTER_ACTIVE = 'FILTER_ACTIVE'
@@ -25,6 +26,7 @@ const elements = {
     markAllDoneButton,
     deleteAllTodosButton,
     errorMessageContainer,
+    todoCounter,
     filters: [
         {
             selector: showAllTodosButton, logic: FILTER_ALL, label: 'all',
