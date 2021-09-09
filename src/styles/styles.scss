@@ -1,0 +1,9 @@
+@import './reset';
+@import './variables';
+@import './partials/TodoContainer.scss';
+
+
+body {
+    background-color: $background-color;
+    margin: 50px;
+}

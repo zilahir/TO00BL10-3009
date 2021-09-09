@@ -1,0 +1,27 @@
+@import '../mixins/box_shadow';
+@import '../mixins/button';
+
+.todo-container {
+    @include box-shadow();
+    background: rgba(#fff, 1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 10px;
+    .new-todo {
+        @import '../components/Input.scss';
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        .new-todo-submit {
+            @include button() {
+                background: rgba(#D7DADF, 0.8);
+
+                &:hover {
+                    background: rgba(#D7DADF, 1);
+                }
+            };
+        }
+    }
+}

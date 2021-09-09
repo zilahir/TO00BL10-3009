@@ -6,7 +6,10 @@ module.exports = (_, argv) => {
   const isDevelopment = argv.mode !== 'production';
 
   return {
-    entry: './src/index.js',
+    entry: [
+        './src/index.js',
+        './src/styles/styles.scss'
+    ],
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'build'),
@@ -33,14 +36,25 @@ module.exports = (_, argv) => {
           },
         },
         {
-          test: /\.css$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
-        },
+            test: /\.scss$/,
+            exclude: /node_modules/,
+            use: [
+                MiniCssExtractPlugin.loader,
+                {
+                    loader: 'file-loader',
+                    options: { outputPath: 'css/', name: '[name].min.css'}
+                },
+                {
+                    loader: "sass-loader",
+                },
+            ],
+            sideEffects: true
+          },
       ],
     },
     plugins: [
-      new HtmlWebpackPlugin({ template: './index.html' }), //
-      new MiniCssExtractPlugin({ filename: 'style.css' }),
+      new HtmlWebpackPlugin({ template: './index.html' }),
+      new MiniCssExtractPlugin({ filename: 'css/styles.min.css' }),
     ],
     performance: {
       hints: isDevelopment ? 'warning' : 'error',

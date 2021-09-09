@@ -1,0 +1,7 @@
+@import '../mixins/input';
+
+.new-todo-input {
+    @include input() {
+        flex: 1;
+    }
+}

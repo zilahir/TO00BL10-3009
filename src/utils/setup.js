@@ -1,5 +1,5 @@
 import todoSetup from '../todo'
-import elements from './globals'
+// import elements from './globals'
 
 const INITIAL_STATE = [
     {
@@ -18,7 +18,6 @@ function localStorageSetup() {
 }
 
 function setup() {
-    elements.rootAppElement.append(document.createElement('h1').innerHTML = 'Todo');
     todoSetup();
     localStorageSetup();
 }
