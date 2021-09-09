@@ -1,5 +1,6 @@
+/* eslint-disable no-param-reassign */
 import Todo, { todoSetup } from '../todo'
-import elements from './globals'
+import elements, { FILTER_ACTIVE, FILTER_ALL, FILTER_COMPLETED } from './globals'
 
 function handleNewEventCreated(event) {
     return event.detail
@@ -18,6 +19,21 @@ function hanleMarkAllDone(method) {
             }
             return false
         })
+    }
+}
+
+function handleFilterLogic(logic) {
+    const activeTodos = Array.from(elements.todoContainer.querySelectorAll(`[data-isdone='false']`))
+    const completedTodos = Array.from(elements.todoContainer.querySelectorAll(`[data-isdone='true']`))
+    const allTodos = Array.from(elements.todoContainer.querySelectorAll('.one-todo'));
+    if (logic === FILTER_COMPLETED) {
+        activeTodos.map(todo => todo.classList.add('hidden'))
+        completedTodos.map(todo => todo.classList.remove('hidden'))
+    } else if (logic === FILTER_ALL) {
+        allTodos.map(todo => todo.classList.remove('hidden'))
+    } else if (logic === FILTER_ACTIVE) {
+        completedTodos.map(todo => todo.classList.add('hidden'))
+        activeTodos.map(todo => todo.classList.remove('hidden'))
     }
 }
 
@@ -54,6 +70,10 @@ function setup() {
     localStorageSetup();
     elements.markAllDoneButton.addEventListener('click', () => hanleMarkAllDone('done'))
     elements.deleteAllTodosButton.addEventListener('click', () => hanleMarkAllDone('delete'))
+    elements.filters.map(button => {
+        button.selector.innerHTML = `Show ${button.logic}`;
+        return button.selector.addEventListener('click', () => handleFilterLogic(button.logic))
+    })
 }
 
 export default setup

@@ -40,6 +40,8 @@
         margin: 10px 0;
         padding-top: 20px;
         display: flex;
+        flex-direction: column;
+        gap: 20px;
 
         ul {
             flex: 1;
@@ -55,6 +57,12 @@
                     background: rgba(#D7DADF, 1);
                 }
             };
+        }
+
+        .btn-text {
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
