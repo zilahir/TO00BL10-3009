@@ -4,7 +4,7 @@ This is a `git` repository for the course Dynamic Web Applications with Javascri
 
 # Roadmap of implementation
 
-- [ ] create git repo on github
+- [x] create git repo on github
 - [ ] setup the project (webpack, linters, skeleton of the application)
 - [ ] setup testing environment (probably with `@testing-library`)
 - [ ] create deployment process (`Github Actions` and `Netlify`)
