@@ -20,6 +20,8 @@ This is a very simple todo application writtren in `vanilla JS`. No framework us
 
 In this project I am using both `classes` and `id` attributes on `HTMLElements`. The reason for this, is styling elements using `id`s is bad practive, so I am only using `id`s for `DOM` maniuplating, while using `classes` for styling. Accessing the `DOM` happens with the `id`s.
 
+The skeleton of the `HTML` is described within the `index.html`, the rest of the `DOM` is built pragmatically using `javascript`.
+
 ## Features
 
 Below listed the required features of the application set by the course this was made for.
