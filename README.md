@@ -10,6 +10,10 @@ This application is written by Richard Zilahi (LaureaID: `2108162`).
 
 The productino application can be reached via [this](https://zilahir-todo.netlify.app/) link.
 
+## Github
+
+Since this `README` is uploaded elsewhere, the repository of the application can be found [here](https://github.com/zilahir/TO00BL10-3009)
+
 # Roadmap of implementation
 
 - [x] create git repo on github
