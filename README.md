@@ -2,6 +2,10 @@
 
 This is a `git` repository for the course Dynamic Web Applications with Javascript (with course code: `TO00BL10-3009` at Laurea).
 
+## Author
+
+This application is written by Richard Zilahi (LaureaID: `2108162`).
+
 ## Production `URL`
 
 The productino application can be reached via [this](https://zilahir-todo.netlify.app/) link.
