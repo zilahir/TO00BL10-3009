@@ -9,6 +9,12 @@
 
     &[data-isdone="true"] {
         background-color: #fdfd96;
+
+        .one-todo-inner {
+            p {
+                text-decoration: line-through;
+            }
+        }
     }
 
     p {
