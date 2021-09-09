@@ -2,6 +2,10 @@
 
 This is a `git` repository for the course Dynamic Web Applications with Javascript (with course code: `TO00BL10-3009` at Laurea).
 
+## Production `URL`
+
+The productino application can be reached via [this](https://zilahir-todo.netlify.app/) link.
+
 # Roadmap of implementation
 
 - [x] create git repo on github
@@ -52,4 +56,19 @@ There's only one major `dev` dependency, and that is `webpack`. This application
 
 This applicatino is deployed to `netlify` via `GitHub` actions.
 
-## Future
+## Future Ideas
+
+### Functions
+
+The application could be extended in the future with these features
+
+- sharing function
+- reordering todos
+- setting deadlines for todos
+
+### Greenkeeping
+
+There are some room left within the codebase for future greenkeeping, for example: 
+
+- better code splitting for the SCSS
+- `localStorage` could be handled via `Prototypes`
