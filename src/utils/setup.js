@@ -1,7 +1,24 @@
 import Todo, { todoSetup } from '../todo'
+import elements from './globals'
 
 function handleNewEventCreated(event) {
     return event.detail
+}
+
+function hanleMarkAllDone(method) {
+    const todos = JSON.parse(window.localStorage.getItem('todos'))
+    if (Array.isArray(todos)) {
+        todos.map(todo => {
+            const thisTodo = new Todo({id: todo.id})
+            if (method === 'done') {
+                return thisTodo.done()
+            } if (method === 'delete') {
+                window.localStorage.setItem('todos', JSON.stringify([]))
+                return thisTodo.remove()
+            }
+            return false
+        })
+    }
 }
 
 function handleRemoveTodo(event) {
@@ -35,6 +52,8 @@ function localStorageSetup() {
 function setup() {
     todoSetup();
     localStorageSetup();
+    elements.markAllDoneButton.addEventListener('click', () => hanleMarkAllDone('done'))
+    elements.deleteAllTodosButton.addEventListener('click', () => hanleMarkAllDone('delete'))
 }
 
 export default setup

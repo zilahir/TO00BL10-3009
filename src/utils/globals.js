@@ -4,6 +4,8 @@ const newTodoInput = document.getElementById('new-todo-input');
 const todoContainer = document.getElementById('todo-container');
 const newTodoSubmitButton = document.getElementById('new-todo-submit');
 const todosContainer = document.getElementById('todos');
+const markAllDoneButton = document.getElementById('mark-all-done');
+const deleteAllTodosButton = document.getElementById('delete-all')
 
 const elements = {
     rootAppElement,
@@ -11,7 +13,9 @@ const elements = {
     newTodoInput,
     todoContainer,
     newTodoSubmitButton,
-    todosContainer
+    todosContainer,
+    markAllDoneButton,
+    deleteAllTodosButton,
 }
 
 export const icons = {

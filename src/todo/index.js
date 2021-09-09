@@ -10,10 +10,10 @@ function removeTodo(idToRemove) {
 function toggleDone(todoId) {
     const thisTodo = globals.todosContainer.querySelectorAll(`[data-id='${todoId}']`)[0]
     const todos = JSON.parse(window.localStorage.getItem('todos'))
-    const thisTodoObj = todos.find(todo => todo.id.toString() === todoId);
+    const thisTodoObj = todos.find(todo => todo.id.toString() === todoId.toString());
     thisTodo.setAttribute('data-isdone', !thisTodoObj.isDone);
     // need to re-create the state with the changed boolean value in the correct todo object
-    const newState = todos.map(todo => todo.id.toString() === todoId ? {
+    const newState = todos.map(todo => todo.id.toString() === todoId.toString() ? {
         ...todo,
         isDone: !todo.isDone
     } : todo)
@@ -32,8 +32,6 @@ export default class Input {
         this.id = id
         this.createdAt = createdAt
     }
-
-    static thisTodoDomElement = globals.todosContainer.querySelectorAll(`[data-id='${this.id}']`);
 
     isValid() {
         if (this.value !== "" && this.value.length > 3) {
@@ -61,7 +59,8 @@ export default class Input {
     }
 
     remove() {
-        this.thisTodoDomElement.remove()
+        const thisTodoDomElement = globals.todosContainer.querySelectorAll(`[data-id='${this.id}']`);
+        thisTodoDomElement[0].remove();
     }
 
     render() {
@@ -93,6 +92,10 @@ export default class Input {
         todoContainer.append(oneTodoInner);
         todoContainer.append(metaContainer);
         globals.todosContainer.append(todoContainer);
+    }
+
+    done() {
+        toggleDone(this.id)
     }
 }
 
