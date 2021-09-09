@@ -50,6 +50,10 @@ module.exports = (_, argv) => {
             ],
             sideEffects: true
           },
+          {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
+            }
       ],
     },
     plugins: [
