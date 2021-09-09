@@ -4,7 +4,10 @@
   "description": "A ToDo Application written in Pure Javascript for course to00bl10-3009",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "",
+    "prod": "webpack serve --mode=production",
+    "dev": "webpack serve --mode=development",
+    "build": "webpack --mode=production"
   },
   "repository": {
     "type": "git",

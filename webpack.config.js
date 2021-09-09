@@ -16,7 +16,8 @@ module.exports = (_, argv) => {
       port: 5050,
       hot: true,
     },
-    devtool: isDevelopment ? 'eval-source-map' : 'source-map',
+    devtool: isDevelopment ? 'cheap-module-source-map' : false,
+    mode: argv.mode,
     module: {
       rules: [
         {
@@ -43,6 +44,8 @@ module.exports = (_, argv) => {
     ],
     performance: {
       hints: isDevelopment ? 'warning' : 'error',
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000
     },
   };
 };
