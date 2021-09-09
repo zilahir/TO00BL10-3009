@@ -3,6 +3,33 @@
     padding: 20px;
     background: #f9f9f9;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    flex-direction: column;
+
+    .one-todo-inner {
+        display: flex;
+    }
+
+    div {
+        width: 100%;
+        flex: 1;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .delete {
+        opacity: 0.8;
+        &:hover {
+            cursor: pointer;
+            opacity: 1;
+            transform: scale(1.1);
+            transition: all 0.2s ease-in-out;
+        }
+    }
+
+    .meta {
+        border-top: 1px dotted #444;
+        padding: 10px 0;
+        margin-top: 20px;
+    }
 }

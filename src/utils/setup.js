@@ -1,9 +1,15 @@
 import Todo, { todoSetup } from '../todo'
-// import elements from './globals'
 
 function handleNewEventCreated(event) {
-    console.debug('event', event.detail)
     return event.detail
+}
+
+function handleRemoveTodo(event) {
+    const todos = JSON.parse(window.localStorage.getItem('todos'))
+    const filtered = todos.filter(todo => todo.id.toString() !== event.detail)
+    window.localStorage.setItem('todos', JSON.stringify(filtered))
+    const todo = new Todo({id: event.detail})
+    todo.remove()
 }
 
 function localStorageSetup() {
@@ -22,6 +28,7 @@ function localStorageSetup() {
     }
 
     window.addEventListener('todoCreated', (event) => handleNewEventCreated(event));
+    window.addEventListener('removeTodo', (event) => handleRemoveTodo(event))
 }
 
 function setup() {

@@ -2,6 +2,11 @@ import createFormattedDate from '../utils/date'
 import globals, { icons } from '../utils/globals'
 import { addTodo } from '../utils/localStorage'
 
+function removeTodo(idToRemove) {
+    const createEvent = new CustomEvent('removeTodo', { detail: idToRemove });
+    window.dispatchEvent(createEvent);
+}
+
 export default class Input {
     constructor({
         value,
@@ -40,17 +45,33 @@ export default class Input {
         }
     }
 
+    remove() {
+        const domToRemove = globals.todosContainer.querySelectorAll(`[data-id='${this.id}']`);
+        domToRemove[0].remove()
+    }
+
     render() {
         const todoContainer = document.createElement('div');
         todoContainer.setAttribute('data-id', this.id);
         todoContainer.setAttribute('class', 'one-todo');
         const deleteIcon = document.createElement('span')
+        const metaContainer= document.createElement('div')
+        const oneTodoInner = document.createElement('div')
+        oneTodoInner.setAttribute('class', 'one-todo-inner');
+        metaContainer.setAttribute('class', 'meta')
+        metaContainer.setAttribute('id', 'meta')
+        const dateText = document.createElement('p')
+        dateText.innerHTML = this.createdAt;
+        metaContainer.append(dateText);
         deleteIcon.setAttribute('class', 'delete')
         deleteIcon.innerHTML = icons.delete;
+        deleteIcon.addEventListener('click', event => removeTodo(event.currentTarget.parentNode.getAttribute('data-id')));
         const todoText = document.createElement('p');
         todoText.innerHTML = this.value;
-        todoContainer.append(todoText)
-        todoContainer.append(deleteIcon)
+        oneTodoInner.append(todoText)
+        oneTodoInner.append(deleteIcon)
+        todoContainer.append(oneTodoInner)
+        todoContainer.append(metaContainer)
         globals.todosContainer.append(todoContainer)
     }
 }
@@ -61,7 +82,8 @@ function addNewTodo() {
     if (isValid) {
         const createEvent = new CustomEvent('todoCreated', { detail: Todo.render() });
         window.dispatchEvent(createEvent);
-        Todo.create()
+        Todo.create();
+        globals.newTodoInput.value = '';
     } else {
         // TODO: show error message here
         alert("not ok")
