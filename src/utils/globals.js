@@ -9,6 +9,7 @@ const deleteAllTodosButton = document.getElementById('delete-all')
 const showAllTodosButton = document.getElementById('show-all')
 const showCompletedTodosButton = document.getElementById('show-completed')
 const showActiveTodosButton = document.getElementById('show-active')
+const errorMessageContainer = document.getElementById('error-container')
 
 export const FILTER_ALL = 'FILTER_ALL'
 export const FILTER_ACTIVE = 'FILTER_ACTIVE'
@@ -23,6 +24,7 @@ const elements = {
     todosContainer,
     markAllDoneButton,
     deleteAllTodosButton,
+    errorMessageContainer,
     filters: [
         {
             selector: showAllTodosButton, logic: FILTER_ALL, label: 'all',

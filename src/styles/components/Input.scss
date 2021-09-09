@@ -3,5 +3,9 @@
 .new-todo-input {
     @include input() {
         flex: 1;
+
+        &.error {
+            border: 2px solid red;
+        }
     }
 }

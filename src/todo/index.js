@@ -37,6 +37,7 @@ export default class Input {
         if (this.value !== "" && this.value.length > 3) {
             return true
         }
+        globals.newTodoInput.classList.add('error')
         return false
     }
 
@@ -103,13 +104,24 @@ function addNewTodo() {
     const Todo = new Input({value: globals.newTodoInput.value});
     const isValid = Todo.isValid()
     if (isValid) {
+        const errorMessage = document.getElementById('error-container')
+        if (errorMessage !== null) {
+            errorMessage.remove()
+        }
         const createEvent = new CustomEvent('todoCreated', { detail: Todo.render() });
         window.dispatchEvent(createEvent);
         Todo.create();
         globals.newTodoInput.value = '';
     } else {
         // TODO: show error message here
-        alert("not ok")
+        const errorContainer = document.createElement('div');
+        errorContainer.setAttribute('id', 'error-container');
+        errorContainer.setAttribute('class', 'error-container')
+        const errorTextMessage = document.createElement('p');
+        errorTextMessage.innerHTML = 'You have to type something with at least 3 character!'
+        errorContainer.append(errorTextMessage)
+        globals.todoContainer.prepend(errorContainer)
+
     }
     
 }
