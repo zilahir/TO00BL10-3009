@@ -63,6 +63,10 @@ function localStorageSetup() {
             const thisTodo = new Todo(todo)
             return thisTodo.render()
         })
+
+        // set the counter
+        console.debug('lofasz', elements.todoContainer)
+        elements.todoContainer.querySelector('p').innerHTML = `${currentTodos.length} todo(s)`
     }
 
     window.addEventListener('todoCreated', (event) => handleNewEventCreated(event));
@@ -78,12 +82,6 @@ function setup() {
         button.selector.innerHTML = `Show ${button.label}`;
         return button.selector.addEventListener('click', () => handleFilterLogic(button.logic, button.label))
     })
-    const todoCounterContainer = document.createElement('div');
-    todoCounterContainer.setAttribute('id', 'todo-counter');
-    todoCounterContainer.setAttribute('class', 'todo-counter');
-    const todoCounter = document.createElement('p');
-    todoCounterContainer.append(todoCounter);
-    elements.todoContainer.prepend(todoCounterContainer);
 }
 
 export default setup
