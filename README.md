@@ -8,14 +8,46 @@ This is a `git` repository for the course Dynamic Web Applications with Javascri
 - [x] setup the project (webpack, linters, skeleton of the application, scss)
 - [ ] create deployment process (`Github Actions` and `Netlify`)
 - [x] implementation basic functionalities
-- [ ] deploy first version
+- [x] deploy first version
 
 # Documentation
 
+This is a very simple todo application writtren in `vanilla JS`. No framework used, and taking advantages of the ES6, and ES7 features. There's no additional framework used.
+
+## Features
+
+Below listed the required features of the application set by the course this was made for.
+
+- [x] The items entered in the field are assembled into a list on the page by pressing the button.
+- [x] The content of the input fields must be checked for blank as well as incorrect (eg too short) content
+- [x] Incorrect content in the input field causes an error message as well as an incorrect field highlighting (eg red - `X` border).
+- [x] It must be possible to remove elements from the list and mark the task as done
+- [x] The application CSS and JavaScript must be specified in an external CSS file
+- [x] The information in the list is stored in a browser, eg localstorage
+
+## Webpack
+
+There is a _very simple_ webpack configuration utilized. It does nothing really, just builds the application, helps with code splitting, and modularizing.
+
+## SCSS
+
+This project takes advantage of `SCSS`, and it webpack compiles it into a single output of `CSS` file.
+
 ## Dev Envrionment
+
+TO run this application locally, follow these steps:
+
+1) clone this repo
+2) hit `npm i`
+3) run `npm run start`
+4) the applicatino will run on port `5050`
 
 ## Dependencies
 
+There's only one major `dev` dependency, and that is `webpack`. This application was built using node 14.7
+
 ## Deployment
 
-## Issues
+This applicatino is deployed to `netlify` via `GitHub` actions.
+
+## Future
