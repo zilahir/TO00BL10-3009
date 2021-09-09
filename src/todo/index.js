@@ -21,6 +21,7 @@ function toggleDone(todoId) {
 }
 
 export default class Input {
+    // class constructor that represents a Todo
     constructor({
         value,
         isDone = false,
@@ -33,6 +34,7 @@ export default class Input {
         this.createdAt = createdAt
     }
 
+    // validating the input value
     isValid() {
         if (this.value !== "" && this.value.length > 3) {
             return true
@@ -41,6 +43,7 @@ export default class Input {
         return false
     }
 
+    // creating a Todo
     create() {
         addTodo({
             value: this.value,
@@ -50,6 +53,7 @@ export default class Input {
         })
     }
 
+    // returning the object represetation of a Todo
     serialize() {
         return {
             value: this.value,
@@ -59,11 +63,13 @@ export default class Input {
         }
     }
 
+    // removing a todo
     remove() {
         const thisTodoDomElement = globals.todosContainer.querySelectorAll(`[data-id='${this.id}']`);
         thisTodoDomElement[0].remove();
     }
 
+    // rendering a todo into the DOM
     render() {
         const todoContainer = document.createElement('div');
         todoContainer.setAttribute('data-id', this.id);
@@ -95,6 +101,7 @@ export default class Input {
         globals.todosContainer.append(todoContainer);
     }
 
+    // toggling a todo's isDone state
     done() {
         toggleDone(this.id)
     }
@@ -104,13 +111,18 @@ function addNewTodo() {
     const Todo = new Input({value: globals.newTodoInput.value});
     const isValid = Todo.isValid()
     if (isValid) {
+        // the todo passed the validation
+        // remove error message if there's any
         const errorMessage = document.getElementById('error-container')
         if (errorMessage !== null) {
             errorMessage.remove()
         }
+
+        // dispatching event of todoCreated
         const createEvent = new CustomEvent('todoCreated', { detail: Todo.render() });
         window.dispatchEvent(createEvent);
         Todo.create();
+        // resetting the input field's value
         globals.newTodoInput.value = '';
     } else {
         // TODO: show error message here

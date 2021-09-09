@@ -30,6 +30,8 @@ In this project I am using both `classes` and `id` attributes on `HTMLElements`.
 
 The skeleton of the `HTML` is described within the `index.html`, the rest of the `DOM` is built pragmatically using `javascript`.
 
+The code is documented, which makes it easy to read and understand.
+
 ## Features
 
 Below listed the required features of the application set by the course this was made for.
@@ -88,3 +90,4 @@ There are some room left within the codebase for future greenkeeping, for exampl
 
 - better code splitting for the SCSS
 - `localStorage` could be handled via `Prototypes`
+- JSDoc could be utilized

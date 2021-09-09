@@ -6,15 +6,19 @@ function handleNewEventCreated(event) {
     return event.detail
 }
 
-function hanleMarkAllDone(method) {
+function handleAll(method) {
     const todos = JSON.parse(window.localStorage.getItem('todos'))
     if (Array.isArray(todos)) {
         todos.map(todo => {
             const thisTodo = new Todo({id: todo.id})
             if (method === 'done') {
+                // if methid is done, se this todo as done
                 return thisTodo.done()
             } if (method === 'delete') {
-                window.localStorage.setItem('todos', JSON.stringify([]))
+                // if method is delete, clear the localstorage
+                window.localStorage.setItem('todos', JSON.stringify([]));
+                // and set the counter to zero, as there is no todos at the moment
+                elements.todoContainer.querySelector('p').innerHTML = '0 todo';
                 return thisTodo.remove()
             }
             return false
@@ -23,17 +27,23 @@ function hanleMarkAllDone(method) {
 }
 
 function handleFilterLogic(logic, label) {
+    // handling different filtering logic
     const activeTodos = Array.from(elements.todoContainer.querySelectorAll(`[data-isdone='false']`))
     const completedTodos = Array.from(elements.todoContainer.querySelectorAll(`[data-isdone='true']`))
     const allTodos = Array.from(elements.todoContainer.querySelectorAll('.one-todo'));
     const filterButtons = Array.from(document.querySelectorAll('.btn-filter'))
     if (logic === FILTER_COMPLETED) {
+        // activeTodos should be hidden
         activeTodos.map(todo => todo.classList.add('hidden'))
+        // completedTodos should be visible
         completedTodos.map(todo => todo.classList.remove('hidden'))
     } else if (logic === FILTER_ALL) {
+        // everything should be visible
         allTodos.map(todo => todo.classList.remove('hidden'))
     } else if (logic === FILTER_ACTIVE) {
+        // completedTodos should be hidden
         completedTodos.map(todo => todo.classList.add('hidden'))
+        // activeTodos should be visibld
         activeTodos.map(todo => todo.classList.remove('hidden'))
     }
 
@@ -65,7 +75,6 @@ function localStorageSetup() {
         })
 
         // set the counter
-        console.debug('lofasz', elements.todoContainer)
         elements.todoContainer.querySelector('p').innerHTML = `${currentTodos.length} todo(s)`
     }
 
@@ -76,8 +85,11 @@ function localStorageSetup() {
 function setup() {
     todoSetup();
     localStorageSetup();
-    elements.markAllDoneButton.addEventListener('click', () => hanleMarkAllDone('done'))
-    elements.deleteAllTodosButton.addEventListener('click', () => hanleMarkAllDone('delete'))
+    // binding the event listener to the buttons
+    elements.markAllDoneButton.addEventListener('click', () => handleAll('done'))
+    elements.deleteAllTodosButton.addEventListener('click', () => handleAll('delete'))
+    // the filter buttons are stored in an array 
+    // using commmon reusable functions to handle their logic
     elements.filters.map(button => {
         button.selector.innerHTML = `Show ${button.label}`;
         return button.selector.addEventListener('click', () => handleFilterLogic(button.logic, button.label))
