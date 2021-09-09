@@ -22,7 +22,7 @@ jobs:
         uses: bahmutov/npm-install@v1
       
       - name: Build Application
-        run: npm run build-production
+        run: npm run build
 
       - name: Deploy production to Netlify
         uses: South-Paw/action-netlify-deploy@v1.2.0

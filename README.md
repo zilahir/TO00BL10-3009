@@ -14,6 +14,8 @@ This is a `git` repository for the course Dynamic Web Applications with Javascri
 
 This is a very simple todo application writtren in `vanilla JS`. No framework used, and taking advantages of the ES6, and ES7 features. There's no additional framework used.
 
+In this project I am using both `classes` and `id` attributes on `HTMLElements`. The reason for this, is styling elements using `id`s is bad practive, so I am only using `id`s for `DOM` maniuplating, while using `classes` for styling. Accessing the `DOM` happens with the `id`s.
+
 ## Features
 
 Below listed the required features of the application set by the course this was made for.
