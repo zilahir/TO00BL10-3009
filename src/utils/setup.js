@@ -22,10 +22,11 @@ function hanleMarkAllDone(method) {
     }
 }
 
-function handleFilterLogic(logic) {
+function handleFilterLogic(logic, label) {
     const activeTodos = Array.from(elements.todoContainer.querySelectorAll(`[data-isdone='false']`))
     const completedTodos = Array.from(elements.todoContainer.querySelectorAll(`[data-isdone='true']`))
     const allTodos = Array.from(elements.todoContainer.querySelectorAll('.one-todo'));
+    const filterButtons = Array.from(document.querySelectorAll('.btn-filter'))
     if (logic === FILTER_COMPLETED) {
         activeTodos.map(todo => todo.classList.add('hidden'))
         completedTodos.map(todo => todo.classList.remove('hidden'))
@@ -35,6 +36,8 @@ function handleFilterLogic(logic) {
         completedTodos.map(todo => todo.classList.add('hidden'))
         activeTodos.map(todo => todo.classList.remove('hidden'))
     }
+
+    filterButtons.map(button => button.getAttribute('id') === `show-${label}` ? button.classList.add('active') : button.classList.remove('active'))
 }
 
 function handleRemoveTodo(event) {
@@ -71,8 +74,8 @@ function setup() {
     elements.markAllDoneButton.addEventListener('click', () => hanleMarkAllDone('done'))
     elements.deleteAllTodosButton.addEventListener('click', () => hanleMarkAllDone('delete'))
     elements.filters.map(button => {
-        button.selector.innerHTML = `Show ${button.logic}`;
-        return button.selector.addEventListener('click', () => handleFilterLogic(button.logic))
+        button.selector.innerHTML = `Show ${button.label}`;
+        return button.selector.addEventListener('click', () => handleFilterLogic(button.logic, button.label))
     })
 }
 

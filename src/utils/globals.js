@@ -25,13 +25,13 @@ const elements = {
     deleteAllTodosButton,
     filters: [
         {
-            selector: showAllTodosButton, logic: FILTER_ALL,
+            selector: showAllTodosButton, logic: FILTER_ALL, label: 'all',
         },
         {
-            selector: showCompletedTodosButton, logic: FILTER_COMPLETED,
+            selector: showCompletedTodosButton, logic: FILTER_COMPLETED, label: 'completed',
         },
         {
-            selector: showActiveTodosButton, logic: FILTER_ACTIVE
+            selector: showActiveTodosButton, logic: FILTER_ACTIVE, label: 'active'
         }
     ]
 }

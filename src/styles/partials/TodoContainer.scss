@@ -63,6 +63,11 @@
             &:hover {
                 text-decoration: underline;
             }
+
+            &.active {
+                text-decoration: underline;
+                font-weight: 700;
+            }
         }
     }
 }
