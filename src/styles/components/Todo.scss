@@ -5,6 +5,15 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    transition: all 0.2s ease-in-out;
+
+    &[data-isdone="true"] {
+        background-color: #fdfd96;
+    }
+
+    p {
+        flex: 1;
+    }
 
     .one-todo-inner {
         display: flex;
@@ -19,6 +28,7 @@
 
     .delete {
         opacity: 0.8;
+        margin-left: 10px;
         &:hover {
             cursor: pointer;
             opacity: 1;

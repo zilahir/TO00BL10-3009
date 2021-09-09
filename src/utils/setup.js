@@ -16,7 +16,8 @@ function localStorageSetup() {
     const todos = window.localStorage.getItem('todos')
     if (!todos) {
         // initialize the storage with an empty array to ensure type safety
-        const dummyTodo = new Todo({ value: 'Demo Todo' })
+        const dummyTodo = new Todo({ value: 'Demo Todo' });
+        dummyTodo.render();
         window.localStorage.setItem('todos', JSON.stringify([dummyTodo.serialize()]));
     } else if (Array.isArray(JSON.parse(todos))) {
         // render the existing todos in the storage
