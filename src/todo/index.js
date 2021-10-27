@@ -125,7 +125,6 @@ function addNewTodo() {
         // resetting the input field's value
         globals.newTodoInput.value = '';
     } else {
-        // TODO: show error message here
         const errorContainer = document.createElement('div');
         errorContainer.setAttribute('id', 'error-container');
         errorContainer.setAttribute('class', 'error-container')
